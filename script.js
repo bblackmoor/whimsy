@@ -275,6 +275,10 @@ window.onload = function() {
 			"Someone's allies turn out to be not so nice after all. Even if their friendship is sincere, you are known by the company you keep."
 	];
 	data[i++] = [
+			"Bizarre Local Holiday",
+			"Tradition is the illusion of permanence. The less there is to justify a traditional custom, the harder it is to get rid of it."
+	];
+	data[i++] = [
 			"Double or Nothing",
 			"Things are going well. You can stop now, or go for broke. Are you willing to risk it?"
 	];
