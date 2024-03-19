@@ -1,3 +1,6 @@
+// bblackmoor@blackgate.net
+// https://github.com/bblackmoor/whimsy
+
 let data = new Object();
 let front = false;
 let i = 0;
