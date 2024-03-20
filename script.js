@@ -17,12 +17,17 @@ const body = document.getElementById("body");
 // Getting the buttons
 const button = document.querySelectorAll(".new-card");
 
-// Getting the previous indexes
+// Getting the previous 10 indexes
 const oldIndex01 = document.getElementById("old-index-01");
 const oldIndex02 = document.getElementById("old-index-02");
 const oldIndex03 = document.getElementById("old-index-03");
 const oldIndex04 = document.getElementById("old-index-04");
 const oldIndex05 = document.getElementById("old-index-05");
+const oldIndex06 = document.getElementById("old-index-06");
+const oldIndex07 = document.getElementById("old-index-07");
+const oldIndex08 = document.getElementById("old-index-08");
+const oldIndex09 = document.getElementById("old-index-09");
+const oldIndex10 = document.getElementById("old-index-10");
 
 const blockFront = document.querySelector(".block__front");
 const blockBack = document.querySelector(".block__back");
@@ -51,7 +56,16 @@ const displayCard = () =>{
 	let index = Math.floor(Math.random() * dataLength);
 
 	// Prevent nearby duplicates
-	while ([parseInt(oldIndex01.textContent), parseInt(oldIndex02.textContent), parseInt(oldIndex03.textContent), parseInt(oldIndex04.textContent), parseInt(oldIndex05.textContent)].includes(index)) {
+	while ([parseInt(oldIndex01.textContent), 
+			parseInt(oldIndex02.textContent), 
+			parseInt(oldIndex03.textContent), 
+			parseInt(oldIndex04.textContent), 
+			parseInt(oldIndex05.textContent), 
+			parseInt(oldIndex06.textContent), 
+			parseInt(oldIndex07.textContent), 
+			parseInt(oldIndex08.textContent), 
+			parseInt(oldIndex09.textContent), 
+			parseInt(oldIndex10.textContent)].includes(index)) {
 		newIndex = Math.floor(Math.random() * dataLength);
 		// alert("Swap " + index + " with " + newIndex);
 		index = newIndex
@@ -80,6 +94,11 @@ const displayCard = () =>{
 	}
 
 	// Record recent indexes
+	oldIndex10.textContent = parseInt(oldIndex09.textContent);
+	oldIndex09.textContent = parseInt(oldIndex08.textContent);
+	oldIndex08.textContent = parseInt(oldIndex07.textContent);
+	oldIndex07.textContent = parseInt(oldIndex06.textContent);
+	oldIndex06.textContent = parseInt(oldIndex05.textContent);
 	oldIndex05.textContent = parseInt(oldIndex04.textContent);
 	oldIndex04.textContent = parseInt(oldIndex03.textContent);
 	oldIndex03.textContent = parseInt(oldIndex02.textContent);
