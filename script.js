@@ -17,6 +17,13 @@ const body = document.getElementById("body");
 // Getting the buttons
 const button = document.querySelectorAll(".new-card");
 
+// Getting the previous indexes
+const oldIndex01 = document.getElementById("old-index-01");
+const oldIndex02 = document.getElementById("old-index-02");
+const oldIndex03 = document.getElementById("old-index-03");
+const oldIndex04 = document.getElementById("old-index-04");
+const oldIndex05 = document.getElementById("old-index-05");
+
 const blockFront = document.querySelector(".block__front");
 const blockBack = document.querySelector(".block__back");
 
@@ -40,7 +47,14 @@ const copyIcon = "<i class=\"fa-regular fa-copy\"></i>";
 const displayCard = () =>{
 	// Generates a random number between 0
 	// and the length of the dataset
-	let index = Math.floor(Math.random()*dataLength);
+	let index = Math.floor(Math.random() * dataLength);
+
+	// Prevent nearby duplicates
+	while ([parseInt(oldIndex01.textContent), parseInt(oldIndex02.textContent), parseInt(oldIndex03.textContent), parseInt(oldIndex04.textContent), parseInt(oldIndex05.textContent)].includes(index)) {
+		newIndex = Math.floor(Math.random() * dataLength);
+		// alert("Swap " + index + " with " + newIndex);
+		index = newIndex
+	}
 
 	// Stores the title of the respective card
 	let cardTitle = data[index][0];
@@ -64,8 +78,15 @@ const displayCard = () =>{
 		textBack.innerHTML = copySpanStart + cardText + " " + copySpanEnd;
 	}
 
+	// Record recent indexes
+	oldIndex05.textContent = parseInt(oldIndex04.textContent);
+	oldIndex04.textContent = parseInt(oldIndex03.textContent);
+	oldIndex03.textContent = parseInt(oldIndex02.textContent);
+	oldIndex02.textContent = parseInt(oldIndex01.textContent);
+	oldIndex01.textContent = index;
+
 	copyText = cardTitle + "\n" + cardText;
-	
+
 	front = !front;
 }
 
@@ -81,15 +102,6 @@ function newCard() {
 
 // Adding an onclick listener to copy the card
 function copyCard() {
-	// Get the text field
-	//var copyText = titleFront.innerHTML;
-
-	// Select the text field
-	//copyText.select();
-	//copyText.setSelectionRange(0, 99999); // For mobile devices
-
-	// Copy the text inside the text field
-	//navigator.clipboard.writeText(copyText.value);
 	navigator.clipboard.writeText(copyText);
 }
 
