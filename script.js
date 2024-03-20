@@ -67,7 +67,6 @@ const displayCard = () =>{
 			parseInt(oldIndex09.textContent), 
 			parseInt(oldIndex10.textContent)].includes(index)) {
 		newIndex = Math.floor(Math.random() * dataLength);
-		// alert("Swap " + index + " with " + newIndex);
 		index = newIndex
 	}
 
