@@ -42,6 +42,7 @@ const cardIcon = "<!-- Icon -->\n<i class=\"fa-solid fa-flip-horizontal fa-scale
 const copySpanStart = "<span class=\"copy-span\" onclick=\"copyCard()\">\n";
 const copySpanEnd = "</span>\n";
 const copyIcon = "<i class=\"fa-regular fa-copy\"></i>";
+const copyTooltip = "<span class=\"copy-tooltip\">Click to copy</span>";
 
 // An arrow function used to get a card randomly
 const displayCard = () =>{
@@ -70,12 +71,12 @@ const displayCard = () =>{
 	// Replacing the current card and the text with a new one
 	if (front) {
 		// Changing the front if back-side is displayed
-		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd;
-		textFront.innerHTML = copySpanStart + cardText + " " + copySpanEnd;
+		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd + copyTooltip;
+		textFront.innerHTML = copySpanStart + cardText + copySpanEnd + copyTooltip;
 	} else {
 		// Changing the back if front-side is displayed
-		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd;
-		textBack.innerHTML = copySpanStart + cardText + " " + copySpanEnd;
+		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd + copyTooltip;
+		textBack.innerHTML = copySpanStart + cardText + copySpanEnd + copyTooltip;
 	}
 
 	// Record recent indexes
