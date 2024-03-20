@@ -108,7 +108,7 @@ p {
 
  /* Tooltip container */
 .card-box {
-	cursor: copy;
+	cursor: pointer;
 }
 
 /* Tooltip text */
