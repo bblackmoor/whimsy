@@ -11,11 +11,8 @@ const titles = document.querySelectorAll(".title");
 // Getting the front and the back text boxes
 const texts = document.querySelectorAll(".text");
 
-// Getting the body
-const body = document.getElementById("body");
-
 // Getting the buttons
-const button = document.querySelectorAll(".new-card");
+const buttons = document.querySelectorAll(".new-card");
 
 // Getting the previous 10 indexes
 const oldIndex01 = document.getElementById("old-index-01");
@@ -38,8 +35,8 @@ const titleBack = titles[1];
 const textFront = texts[0];
 const textBack = texts[1];
 
-const buttonFront = button[0];
-const buttonBack = button[1];
+const buttonFront = buttons[0];
+const buttonBack = buttons[1];
 
 let copyText = "";
 
@@ -84,11 +81,11 @@ const displayCard = () =>{
 	// Replacing the current card and the text with a new one
 	if (front) {
 		// Changing the front if back-side is displayed
-		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd + copyTooltip;
+		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd;
 		textFront.innerHTML = copySpanStart + cardText + copySpanEnd + copyTooltip;
 	} else {
 		// Changing the back if front-side is displayed
-		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd + copyTooltip;
+		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd;
 		textBack.innerHTML = copySpanStart + cardText + copySpanEnd + copyTooltip;
 	}
 

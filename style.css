@@ -77,7 +77,7 @@ p {
 	perspective: 150rem;
 	position: absolute;
 	top: 25%;
-left: 27%;
+	left: 27%;
 }
 
 .block__main {
@@ -113,10 +113,6 @@ left: 27%;
 
 /* Tooltip text */
 .card-box .copy-tooltip {
-	margin: 10px;
-	font-size: 16px;
-	font-family: 'Open Sans', sans-serif;
-
 	visibility: hidden;
 	width: 120px;
 	background-color: black;
@@ -125,11 +121,15 @@ left: 27%;
 	border-radius: 6px;
 	padding: 5px 0;
 
+	margin: 10px;
+	font-size: 16px;
+	font-family: 'Open Sans', sans-serif;
+
 	/* Position the tooltip text */
 	position: absolute;
 	z-index: 1;
-	bottom: -32px;
-	left: 60%;
+	top: -20px;
+	right: -20px;
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
