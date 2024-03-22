@@ -15,7 +15,7 @@ body {
 }
 	
 .card-box {
-	padding:3rem;
+	padding: 2rem 3rem;
 	transition: 0.5s;
 	transition-timing-function: ease-in;
 }
@@ -143,12 +143,13 @@ p {
 	visibility: hidden;
 	font-size:15px;
 	/* line-height: 1.43; */
-	cursor:pointer;
+	cursor: pointer;
 	text-align: center;
 
 	/* Position the tooltip text */
 	position: absolute;
 	z-index: 1;
-	bottom: 40px;
-	left: calc(50% - 80px);
+	bottom: 10px;
+	/* left: calc(50% - 80px); */
+	left: 10px;
 }
