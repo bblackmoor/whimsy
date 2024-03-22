@@ -125,6 +125,8 @@ function newCard() {
 
 	// Displaying a new card when the page loads
 	displayCard();
+				setTimeout("pause()",6000);
+
 }
 
 // Adding an onclick listener to copy the card
@@ -342,4 +344,11 @@ window.onload = function() {
 
 	refreshButtonFront.addEventListener('click', refreshPage);
 	refreshButtonBack.addEventListener('click', refreshPage);
+
+	// event = keyup or keydown
+	document.addEventListener('keydown', (e) => {
+		if (e.code === "Space") {
+			newCard();
+		}
+	});
 }
