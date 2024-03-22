@@ -50,6 +50,8 @@ const refreshButtons = document.querySelectorAll('.btn-refresh');
 const refreshButtonFront = refreshButtons[0];
 const refreshButtonBack = refreshButtons[1];
 
+const instructionText = document.querySelector('.instructions');
+
 // Performs a "full" reload
 const refreshPage = () => {
   location.href=location.href;
@@ -115,6 +117,8 @@ const displayCard = () =>{
 	copyText = cardTitle + "\n" + cardText;
 
 	front = !front;
+
+	instructionText.style.display = "none";
 }
 
 // Adding an onclick listener for the button
@@ -125,8 +129,6 @@ function newCard() {
 
 	// Displaying a new card when the page loads
 	displayCard();
-				setTimeout("pause()",6000);
-
 }
 
 // Adding an onclick listener to copy the card
@@ -342,13 +344,22 @@ window.onload = function() {
 
 	dataLength = i;
 
+	buttonFront.addEventListener('click', newCard);
+	buttonBack.addEventListener('click', newCard);
+
 	refreshButtonFront.addEventListener('click', refreshPage);
 	refreshButtonBack.addEventListener('click', refreshPage);
 
 	// event = keyup or keydown
 	document.addEventListener('keydown', (e) => {
 		if (e.code === "Space") {
-			newCard();
+			// newCard();
+
+			if (front) {
+				buttonFront.click();
+			} else {
+				buttonBack.click();
+			}
 		}
 	});
 }
