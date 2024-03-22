@@ -46,6 +46,15 @@ const copySpanEnd = "</span>\n";
 const copyIcon = "<i class=\"fa-regular fa-copy\"></i>";
 const copyTooltip = "<span class=\"copy-tooltip\">Click to copy</span>";
 
+const refreshButtons = document.querySelectorAll('.btn-refresh');
+const refreshButtonFront = refreshButtons[0];
+const refreshButtonBack = refreshButtons[1];
+
+// Performs a "full" reload
+const refreshPage = () => {
+  location.href=location.href;
+}
+
 // An arrow function used to get a card randomly
 const displayCard = () =>{
 	// Generates a random number between 0
@@ -81,12 +90,14 @@ const displayCard = () =>{
 	// Replacing the current card and the text with a new one
 	if (front) {
 		// Changing the front if back-side is displayed
-		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd;
-		textFront.innerHTML = copySpanStart + cardText + copySpanEnd + copyTooltip;
+		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
+		textFront.innerHTML = copySpanStart + cardText + copyTooltip + copySpanEnd;
+		refreshButtonFront.style.visibility = "visible";
 	} else {
 		// Changing the back if front-side is displayed
-		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copySpanEnd;
-		textBack.innerHTML = copySpanStart + cardText + copySpanEnd + copyTooltip;
+		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
+		textBack.innerHTML = copySpanStart + cardText + copyTooltip + copySpanEnd;
+		refreshButtonBack.style.visibility = "visible";
 	}
 
 	// Record recent indexes
@@ -328,5 +339,7 @@ window.onload = function() {
 	];
 
 	dataLength = i;
-	//	displayCard()
+
+	refreshButtonFront.addEventListener('click', refreshPage);
+	refreshButtonBack.addEventListener('click', refreshPage);
 }

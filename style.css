@@ -107,12 +107,12 @@ p {
 }
 
  /* Tooltip container */
-.card-box {
+.copy-span {
 	cursor: pointer;
 }
 
 /* Tooltip text */
-.card-box .copy-tooltip {
+.copy-span .copy-tooltip {
 	visibility: hidden;
 	width: 120px;
 	background-color: black;
@@ -133,7 +133,22 @@ p {
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.card-box:hover .copy-tooltip {
+.copy-span:hover .copy-tooltip {
 	visibility: visible;
 	opacity: 1;
-} 
+}
+
+/* Refresh icon is a page refresh button */
+.btn-refresh {
+	visibility: hidden;
+	font-size:15px;
+	/* line-height: 1.43; */
+	cursor:pointer;
+	text-align: center;
+
+	/* Position the tooltip text */
+	position: absolute;
+	z-index: 1;
+	bottom: 40px;
+	left: calc(50% - 80px);
+}
