@@ -81,7 +81,7 @@ p {
 }
 
 .block__main {
-	min-width: 45vw;
+	min-width: 40vw;
 	position: absolute;
 	transition: all .8s ease;
 	backface-visibility: hidden;
