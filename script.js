@@ -51,13 +51,15 @@ const refreshButtons = document.querySelectorAll('.btn-refresh');
 const refreshButtonFront = refreshButtons[0];
 const refreshButtonBack = refreshButtons[1];
 
-const instructionText = document.querySelector('.instructions');
+const instructionTexts = document.querySelectorAll('.instructions');
+const instructionTextFront = instructionTexts[0];
+const instructionTextBack = instructionTexts[1];
 
 // An arrow function used to get a card randomly
-function displayCard() {
+function displayCard(index) {
 	// Generates a random number between 0
 	// not including previous 10 indexes
-	if (index != 0) {
+	if (index < 0 || index > dataLength) {
 		index = Math.floor(Math.random() * (dataLength - 1)) + 1;
 
 		// Prevent nearby duplicates
@@ -118,30 +120,44 @@ function displayCard() {
 	copyText = cardTitle + "\n" + cardText;
 
 	front = !front;
-
-	instructionText.style.display = "none";
 }
 
 // flip to new card
 function newCard() {
+	if (front) {
+		instructionTextFront.style.display = "none";
+	} else {
+		instructionTextBack.style.display = "none";
+	}
+
 	// Rotating the Card Box
 	blockBack.classList.toggle('rotateB');
 	blockFront.classList.toggle('rotateF');
 	
 	// Displaying a new card when the page loads
 	index = -1;
-	displayCard();
+	displayCard(index);
 }
 
 // flip to the initial card
 function refreshPage() {
+	if (front) {
+		instructionTextFront.innerHTML = "(or tap the spacebar)";
+		instructionTextFront.style.visibility = "visible";
+		instructionTextFront.style.display = "block";
+	} else {
+		instructionTextBack.innerHTML = "(or tap the spacebar)";
+		instructionTextBack.style.visibility = "visible";
+		instructionTextBack.style.display = "block";
+	}
+
 	// Rotating the Card Box
 	blockBack.classList.toggle('rotateB');
 	blockFront.classList.toggle('rotateF');
 
 	// Displaying a new card when the page loads
 	index = 0;
-	displayCard();
+	displayCard(index);
 }
 
 // Adding an onclick listener to copy the card
