@@ -3,6 +3,7 @@
 
 let data = new Object();
 let front = false;
+let index = 0;
 let i = 0;
 
 // Getting the front and the back titles
@@ -52,30 +53,30 @@ const refreshButtonBack = refreshButtons[1];
 
 const instructionText = document.querySelector('.instructions');
 
-// Performs a "full" reload
-const refreshPage = () => {
-  location.href=location.href;
-}
-
 // An arrow function used to get a card randomly
-const displayCard = () =>{
+function displayCard() {
 	// Generates a random number between 0
-	// and the length of the dataset
-	let index = Math.floor(Math.random() * dataLength);
+	// not including previous 10 indexes
+	if (index != 0) {
+		index = Math.floor(Math.random() * (dataLength - 1)) + 1;
 
-	// Prevent nearby duplicates
-	while ([parseInt(oldIndex01.textContent), 
-			parseInt(oldIndex02.textContent), 
-			parseInt(oldIndex03.textContent), 
-			parseInt(oldIndex04.textContent), 
-			parseInt(oldIndex05.textContent), 
-			parseInt(oldIndex06.textContent), 
-			parseInt(oldIndex07.textContent), 
-			parseInt(oldIndex08.textContent), 
-			parseInt(oldIndex09.textContent), 
-			parseInt(oldIndex10.textContent)].includes(index)) {
-		newIndex = Math.floor(Math.random() * dataLength);
-		index = newIndex
+		// Prevent nearby duplicates
+		while ([parseInt(oldIndex01.textContent), 
+				parseInt(oldIndex02.textContent), 
+				parseInt(oldIndex03.textContent), 
+				parseInt(oldIndex04.textContent), 
+				parseInt(oldIndex05.textContent), 
+				parseInt(oldIndex06.textContent), 
+				parseInt(oldIndex07.textContent), 
+				parseInt(oldIndex08.textContent), 
+				parseInt(oldIndex09.textContent), 
+				parseInt(oldIndex10.textContent),
+				0].includes(index)) {
+			newIndex = Math.floor(Math.random() * (dataLength - 1)) + 1;
+			index = newIndex;
+		}
+	} else {
+		// This space intentionally left blank
 	}
 
 	// Stores the title of the respective card
@@ -121,13 +122,25 @@ const displayCard = () =>{
 	instructionText.style.display = "none";
 }
 
-// Adding an onclick listener for the button
+// flip to new card
 function newCard() {
+	// Rotating the Card Box
+	blockBack.classList.toggle('rotateB');
+	blockFront.classList.toggle('rotateF');
+	
+	// Displaying a new card when the page loads
+	index = -1;
+	displayCard();
+}
+
+// flip to the initial card
+function refreshPage() {
 	// Rotating the Card Box
 	blockBack.classList.toggle('rotateB');
 	blockFront.classList.toggle('rotateF');
 
 	// Displaying a new card when the page loads
+	index = 0;
 	displayCard();
 }
 
@@ -137,6 +150,10 @@ function copyCard() {
 }
 
 window.onload = function() {
+	data[i++] = [
+			"Whimsy Cards",
+			"Whimsy Cards copyright &copy; 1987 Lion Rampant<br />(Used without permission.)"
+	];
 	data[i++] = [
 			"Abrupt Change Of Events",
 			"Suddenly things are not happening the way they were a moment ago. Alliances switch, secrets are revealed, and new information surfaces."
@@ -349,16 +366,20 @@ window.onload = function() {
 
 	refreshButtonFront.addEventListener('click', refreshPage);
 	refreshButtonBack.addEventListener('click', refreshPage);
-
+	
 	// event = keyup or keydown
 	document.addEventListener('keydown', (e) => {
 		if (e.code === "Space") {
-			// newCard();
-
 			if (front) {
 				buttonFront.click();
 			} else {
 				buttonBack.click();
+			}
+		} else if (e.code === "Escape" || e.key === "Esc" || e.keyCode === 27) {
+			if (front) {
+				refreshButtonFront.click();
+			} else {
+				refreshButtonBack.click();
 			}
 		}
 	});
