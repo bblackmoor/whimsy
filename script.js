@@ -89,7 +89,7 @@ function displayCard(index) {
 
 	// The text if no text is present
 	if(!cardText) {
-		cardText = "Whimsy Cards copyright &copy; 1987 (Used without permission)"
+		cardText = "ERROR";
 	}
 
 	// Replacing the current card and the text with a new one
@@ -142,11 +142,11 @@ function newCard() {
 // flip to the initial card
 function refreshPage() {
 	if (front) {
-		instructionTextFront.innerHTML = "(or tap the spacebar)";
+		instructionTextFront.innerHTML = "SPACEBAR to select a card&nbsp;&nbsp;&nbsp;&nbsp;ESCAPE to start over";
 		instructionTextFront.style.visibility = "visible";
 		instructionTextFront.style.display = "block";
 	} else {
-		instructionTextBack.innerHTML = "(or tap the spacebar)";
+		instructionTextBack.innerHTML = "SPACEBAR to select a card&nbsp;&nbsp;&nbsp;&nbsp;ESCAPE to start over";
 		instructionTextBack.style.visibility = "visible";
 		instructionTextBack.style.display = "block";
 	}
