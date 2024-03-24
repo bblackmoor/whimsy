@@ -42,7 +42,7 @@ const buttonBack = buttons[1];
 let copyText = "";
 
 const cardIcon = "<!-- Icon -->\n<i class=\"fa-solid fa-flip-horizontal fa-scale-unbalanced\"></i>\n";
-const copySpanStart = "<span class=\"copy-span\" onclick=\"copyCard()\">\n";
+const copySpanStart = "<span class=\"copy-span\" style=\"cursor: pointer\" onclick=\"copyCard()\">\n";
 const copySpanEnd = "</span>\n";
 const copyIcon = "<i class=\"fa-regular fa-copy\"></i>";
 const copyTooltip = "<span class=\"copy-tooltip\">Click to copy</span>";
