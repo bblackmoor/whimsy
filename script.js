@@ -352,7 +352,7 @@ window.onload = function() {
 	];
 	data[i++] = [
 			"Bizarre Local Holiday",
-			"Tradition is the illusion of permanence. The less there is to justify a traditional custom, the harder it is to get rid of it."
+			"Businesses are open or closed when they normally aren't. Special foods and costumes abound. The normal rules of behavior might be altered in surprising ways."
 	];
 	data[i++] = [
 			"Double or Nothing",
