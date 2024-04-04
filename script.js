@@ -1,10 +1,12 @@
 // bblackmoor@blackgate.net
 // https://github.com/bblackmoor/whimsy
+// :TODO: I am aware that my variable scope is all over the place.
 
 let data = new Object();
 let front = false;
 let index = 0;
 let i = 0;
+let copyText = "";
 
 // Getting the front and the back titles
 const titles = document.querySelectorAll(".title");
@@ -39,8 +41,6 @@ const textBack = texts[1];
 const buttonFront = buttons[0];
 const buttonBack = buttons[1];
 
-let copyText = "";
-
 const cardIcon = "<!-- Icon -->\n<i class=\"fa-solid fa-flip-horizontal fa-scale-unbalanced\"></i>\n";
 const copySpanStart = "<span class=\"copy-span\" style=\"cursor: pointer\" onclick=\"copyCard()\">\n";
 const copySpanEnd = "</span>\n";
@@ -54,6 +54,41 @@ const initializeButtonBack = initializeButtons[1];
 const instructionTexts = document.querySelectorAll('.instructions');
 const instructionTextFront = instructionTexts[0];
 const instructionTextBack = instructionTexts[1];
+
+// Show initial instructions
+function initializeInstructions() {
+	if (front) {
+		instructionTextFront.innerHTML = "SPACEBAR to select a card&nbsp;&nbsp;&nbsp;&nbsp;ESCAPE to start over";
+		instructionTextFront.style.visibility = "visible";
+		instructionTextFront.style.display = "block";
+	} else {
+		instructionTextBack.innerHTML = "SPACEBAR to select a card&nbsp;&nbsp;&nbsp;&nbsp;ESCAPE to start over";
+		instructionTextBack.style.visibility = "visible";
+		instructionTextBack.style.display = "block";
+	}
+}
+
+// Hide initial instructions
+function hideInstructions() {
+	if (front) {
+		instructionTextFront.style.display = "none";
+	} else {
+		instructionTextBack.style.display = "none";
+	}
+}
+
+// Show initial instructions
+function setInstructionsUnofficial() {
+	if (front) {
+		instructionTextFront.innerHTML = "(Unofficial)";
+		instructionTextFront.style.visibility = "visible";
+		instructionTextFront.style.display = "block";
+	} else {
+		instructionTextBack.innerHTML = "(Unofficial)";
+		instructionTextBack.style.visibility = "visible";
+		instructionTextBack.style.display = "block";
+	}
+}
 
 // Update recent indexes and returns new index
 function getNewIndex(oldIndex) {
@@ -117,11 +152,16 @@ function displayCard(index) {
 	// Stores the title of the respective card
 	let cardTitle = data[index][0];
 
+	// The title if no title is present
+	if (!cardTitle) {
+		cardTitle = "ERROR";
+	}
+
 	// Stores the text of the respective card
 	let cardText = data[index][1];
 
 	// The text if no text is present
-	if(!cardText) {
+	if (!cardText) {
 		cardText = "ERROR";
 	}
 
@@ -129,7 +169,7 @@ function displayCard(index) {
 	let cardSource = data[index][2];
 
 	// The source if no source is present
-	if(!cardSource) {
+	if (!cardSource) {
 		cardSource = "unofficial";
 	}
 
@@ -139,11 +179,31 @@ function displayCard(index) {
 		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
 		textFront.innerHTML = copySpanStart + cardText + copyTooltip + copySpanEnd;
 		initializeButtonFront.style.visibility = "visible";
+
+		if (cardSource == "official") {
+			if (index == 0) {
+				initializeInstructions();
+			} else {
+				hideInstructions();
+			}
+		} else {
+			setInstructionsUnofficial();
+		}
 	} else {
 		// Changing the back if front-side is displayed
 		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
 		textBack.innerHTML = copySpanStart + cardText + copyTooltip + copySpanEnd;
 		initializeButtonBack.style.visibility = "visible";
+
+		if (cardSource == "official") {
+			if (index == 0) {
+				initializeInstructions();
+			} else {
+				hideInstructions();
+			}
+		} else {
+			setInstructionsUnofficial();
+		}
 	}
 
 	copyText = cardTitle + "\n" + cardText;
@@ -153,11 +213,7 @@ function displayCard(index) {
 
 // Randomly select and display new card
 function showNewCard() {
-	if (front) {
-		instructionTextFront.style.display = "none";
-	} else {
-		instructionTextBack.style.display = "none";
-	}
+	hideInstructions();
 
 	// Rotating the Card Box
 	blockBack.classList.toggle('rotateB');
@@ -170,15 +226,7 @@ function showNewCard() {
 
 // flip to the initial card
 function initializePage() {
-	if (front) {
-		instructionTextFront.innerHTML = "SPACEBAR to select a card&nbsp;&nbsp;&nbsp;&nbsp;ESCAPE to start over";
-		instructionTextFront.style.visibility = "visible";
-		instructionTextFront.style.display = "block";
-	} else {
-		instructionTextBack.innerHTML = "SPACEBAR to select a card&nbsp;&nbsp;&nbsp;&nbsp;ESCAPE to start over";
-		instructionTextBack.style.visibility = "visible";
-		instructionTextBack.style.display = "block";
-	}
+	initializeInstructions();
 
 	// Rotating the Card Box
 	blockBack.classList.toggle('rotateB');
@@ -433,11 +481,6 @@ window.onload = function() {
 	data[i++] = [
 			"Double or Nothing",
 			"Things are going well. You can stop now, or go for broke. Are you willing to risk it?",
-			"uofficial"
-	];
-	data[i++] = [
-			"From The Ashes",
-			"A character who went down early in a fight somehow returns. They have half of their full health, mana, or whatever.",
 			"uofficial"
 	];
 	data[i++] = [
