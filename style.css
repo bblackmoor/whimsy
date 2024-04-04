@@ -151,8 +151,8 @@ p {
 	opacity: 1;
 }
 
-/* Refresh icon is a page refresh button */
-.btn-refresh {
+/* Initialize icon is a page initialize button */
+.btn-initialize {
 	/* visibility: hidden; */
 	font-size:15px;
 	/* line-height: 1.43; */
