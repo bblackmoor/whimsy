@@ -430,7 +430,7 @@ window.onload = function() {
 	];
 	data[i++] = [
 			"Things Are Not As They Seem",
-			"Characters have been deceived, perhaps without malicious intent. The truth need not be known now. A good card for a secret note to the GM.",
+			"Characters have been deceived, perhaps without malicious intent. The truth need not be known now. A good card for a secret note to the game moderator.",
 			"official"
 	];
 	data[i++] = [
@@ -465,7 +465,7 @@ window.onload = function() {
 	];
 	data[i++] = [
 			"Vivid Detail",
-			"Break into the storyline to describe something in detail so the whole group can share the image. You cannot directly change the course of events, but you might inspire the GM.",
+			"Break into the storyline to describe something in detail so the whole group can share the image. You cannot directly change the course of events, but you might inspire the game moderator.",
 			"official"
 	];
 	data[i++] = [
