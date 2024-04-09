@@ -410,7 +410,7 @@ window.onload = function() {
 	];
 	data[i++] = [
 			"Special Circumstances",
-			"Unusual conditions change the normal course of events for good or ill. The circumstances can be personal, such as character's mood, impersonal, such as the weather.",
+			"Unusual conditions change the normal course of events for good or ill. The circumstances can be personal, such as character's mood, or impersonal, such as the weather.",
 			"official"
 	];
 	data[i++] = [
