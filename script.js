@@ -365,7 +365,7 @@ window.onload = function() {
 	];
 	data[i++] = [
 			"New Role",
-			"You take over another character, either of a player or of the gamemaster. The original owner can ask for it back and veto your actions while you have the new role.",
+			"You take over another character, either of a player or of the game moderator. The original owner can ask for it back and veto your actions while you have the new role.",
 			"official"
 	];
 	data[i++] = [
@@ -415,7 +415,7 @@ window.onload = function() {
 	];
 	data[i++] = [
 			"Spectacular Success",
-			"What was a normal success becomes spectacular. Those rare, unexplainable feats are now possible. The gamemaster must watch this card because it is easy to abuse.",
+			"What was a normal success becomes spectacular. Those rare, unexplainable feats are now possible. The game moderator must watch this card because it is easy to abuse.",
 			"official"
 	];
 	data[i++] = [
@@ -445,7 +445,7 @@ window.onload = function() {
 	];
 	data[i++] = [
 			"Ulterior Motive",
-			"A character has motives besides those that are already known, and the ulterior motive can conflict with the surface motive. A good Whimsy for a secret note to the gamemaster.",
+			"A character has motives besides those that are already known, and the ulterior motive can conflict with the surface motive. A good card for a secret note to the game moderator.",
 			"official"
 	];
 	data[i++] = [
@@ -491,6 +491,11 @@ window.onload = function() {
 	data[i++] = [
 			"Just Desserts",
 			"Someone gets what they so richly deserve. It might be good, it might be bad, or it might be ugly.",
+			"uofficial"
+	];
+	data[i++] = [
+			"No One Could Have Survived That!",
+			"After an explosion, a collapsing structure, or some other spectacular disaster has spelled certain doom for someone, play this card to make their doom less certain.",
 			"uofficial"
 	];
 	data[i++] = [
