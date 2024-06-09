@@ -121,7 +121,6 @@ p {
 
  /* Tooltip container */
 .copy-span {
-	cursor: pointer;
 }
 
 /* Tooltip text */
@@ -147,22 +146,30 @@ p {
 
 /* Show the tooltip text when you mouse over the tooltip container */
 .copy-span:hover .copy-tooltip {
-	visibility: visible;
+	/* Temporarily hidden */
+	visibility: hidden;
 	opacity: 1;
 }
 
-/* Initialize icon is a page initialize button */
+/* Copyright icon is a page initialize button */
 .btn-initialize {
-	/* visibility: hidden; */
 	font-size:15px;
-	/* line-height: 1.43; */
 	cursor: pointer;
 	text-align: center;
-
-	/* Position the tooltip text */
 	position: absolute;
 	z-index: 1;
 	bottom: 10px;
-	/* left: calc(50% - 80px); */
 	left: 10px;
 }
+
+/* List icon is a card history button */
+.btn-history {
+	font-size:15px;
+	cursor: pointer;
+	text-align: center;
+	position: absolute;
+	z-index: 1;
+	bottom: 10px;
+	right: 10px;
+}
+

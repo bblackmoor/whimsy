@@ -42,14 +42,18 @@ const buttonFront = buttons[0];
 const buttonBack = buttons[1];
 
 const cardIcon = "<!-- Icon -->\n<i class=\"fa-solid fa-flip-horizontal fa-scale-unbalanced\"></i>\n";
-const copySpanStart = "<span class=\"copy-span\" style=\"cursor: pointer\" onclick=\"copyCard()\">\n";
+const copySpanStart = "<span class=\"copy-span\">\n";
 const copySpanEnd = "</span>\n";
 const copyIcon = "<i class=\"fa-regular fa-copy\"></i>";
-const copyTooltip = "<span class=\"copy-tooltip\">Click to copy</span>";
+const copyTooltip = "<span class=\"copy-tooltip\">XXX Temporarily hidden</span>";
 
 const initializeButtons = document.querySelectorAll('.btn-initialize');
 const initializeButtonFront = initializeButtons[0];
 const initializeButtonBack = initializeButtons[1];
+
+const historyButtons = document.querySelectorAll('.btn-history');
+const historyButtonFront = historyButtons[0];
+const historyButtonBack = historyButtons[1];
 
 const instructionTexts = document.querySelectorAll('.instructions');
 const instructionTextFront = instructionTexts[0];
@@ -177,8 +181,9 @@ function displayCard(index) {
 	if (front) {
 		// Changing the front if back-side is displayed
 		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
-		textFront.innerHTML = copySpanStart + cardText + copyTooltip + copySpanEnd;
+		textFront.innerHTML = copySpanStart + cardText + copySpanEnd;
 		initializeButtonFront.style.visibility = "visible";
+		historyButtonFront.style.visibility = "visible";
 
 		if (cardSource == "official") {
 			if (index == 0) {
@@ -192,8 +197,9 @@ function displayCard(index) {
 	} else {
 		// Changing the back if front-side is displayed
 		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
-		textBack.innerHTML = copySpanStart + cardText + copyTooltip + copySpanEnd;
+		textBack.innerHTML = copySpanStart + cardText + copySpanEnd;
 		initializeButtonBack.style.visibility = "visible";
+		historyButtonFront.style.visibility = "visible";
 
 		if (cardSource == "official") {
 			if (index == 0) {
@@ -222,6 +228,7 @@ function showNewCard() {
 	// Displaying a random card when the page loads
 	index = getNewIndex(index);
 	displayCard(index);
+	copyCard();
 }
 
 // flip to the initial card
@@ -517,6 +524,9 @@ window.onload = function() {
 	initializeButtonFront.addEventListener('click', initializePage);
 	initializeButtonBack.addEventListener('click', initializePage);
 	
+	historyButtonFront.addEventListener('click', initializePage);
+	historyButtonBack.addEventListener('click', initializePage);
+
 	// event = keyup or keydown
 	document.addEventListener('keydown', (e) => {
 		if (e.code === "Space") {
