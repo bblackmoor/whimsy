@@ -51,9 +51,9 @@ const initializeButtons = document.querySelectorAll('.btn-initialize');
 const initializeButtonFront = initializeButtons[0];
 const initializeButtonBack = initializeButtons[1];
 
-const historyButtons = document.querySelectorAll('.btn-history');
-const historyButtonFront = historyButtons[0];
-const historyButtonBack = historyButtons[1];
+// const historyButtons = document.querySelectorAll('.btn-history');
+// const historyButtonFront = historyButtons[0];
+// const historyButtonBack = historyButtons[1];
 
 const instructionTexts = document.querySelectorAll('.instructions');
 const instructionTextFront = instructionTexts[0];
@@ -183,7 +183,7 @@ function displayCard(index) {
 		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
 		textFront.innerHTML = copySpanStart + cardText + copySpanEnd;
 		initializeButtonFront.style.visibility = "visible";
-		historyButtonFront.style.visibility = "visible";
+		// historyButtonFront.style.visibility = "visible";
 
 		if (cardSource == "official") {
 			if (index == 0) {
@@ -199,7 +199,7 @@ function displayCard(index) {
 		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
 		textBack.innerHTML = copySpanStart + cardText + copySpanEnd;
 		initializeButtonBack.style.visibility = "visible";
-		historyButtonFront.style.visibility = "visible";
+		// historyButtonFront.style.visibility = "visible";
 
 		if (cardSource == "official") {
 			if (index == 0) {
@@ -210,6 +210,51 @@ function displayCard(index) {
 		} else {
 			setInstructionsUnofficial();
 		}
+	}
+
+	copyText = cardTitle + "\n" + cardText;
+
+	front = !front;
+}
+
+// Construct history card and display it
+function displayHistory() {
+	// Stores the title of the respective card
+	let cardTitle = "Cards Drawn";
+	let cardText = "<ul>\n";
+
+	// XXX add error checking, will fail if index unset
+	cardText += "<li><b>" + data[ parseInt(oldIndex01.textContent) ][0] + ":</b> " + parseInt(oldIndex01.textContent) + "</li>\n";
+	cardText += "<li><b>" + data[ parseInt(oldIndex02.textContent) ][0] + ":</b> " + parseInt(oldIndex02.textContent) + "</li>\n";
+	cardText += "<li><b>" + parseInt(oldIndex03.textContent) + ":</b> " + parseInt(oldIndex03.textContent) + "</li>\n";
+	cardText += "<li><b>" + parseInt(oldIndex04.textContent) + ":</b> " + parseInt(oldIndex04.textContent) + "</li>\n";
+	cardText += "<li><b>" + parseInt(oldIndex05.textContent) + ":</b> " + parseInt(oldIndex05.textContent) + "</li>\n";
+	cardText += "<li><b>" + parseInt(oldIndex06.textContent) + ":</b> " + parseInt(oldIndex06.textContent) + "</li>\n";
+	cardText += "<li><b>" + parseInt(oldIndex07.textContent) + ":</b> " + parseInt(oldIndex07.textContent) + "</li>\n";
+	cardText += "<li><b>" + parseInt(oldIndex08.textContent) + ":</b> " + parseInt(oldIndex08.textContent) + "</li>\n";
+	cardText += "<li><b>" + parseInt(oldIndex09.textContent) + ":</b> " + parseInt(oldIndex09.textContent) + "</li>\n";
+	cardText += "<li><b>" + parseInt(oldIndex10.textContent) + ":</b> " + parseInt(oldIndex10.textContent) + "</li>\n";
+	cardText += "</ul>\n";
+
+	// Stores the text of the respective card
+
+	// Replacing the current card and the text with a new one
+	if (front) {
+		// Changing the front if back-side is displayed
+		titleFront.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
+		textFront.innerHTML = copySpanStart + cardText + copySpanEnd;
+		initializeButtonFront.style.visibility = "visible";
+		// historyButtonFront.style.visibility = "visible";
+
+		hideInstructions();
+	} else {
+		// Changing the back if front-side is displayed
+		titleBack.innerHTML = copySpanStart + cardTitle + cardIcon + copyTooltip + copySpanEnd;
+		textBack.innerHTML = copySpanStart + cardText + copySpanEnd;
+		initializeButtonBack.style.visibility = "visible";
+		// historyButtonFront.style.visibility = "visible";
+
+		hideInstructions();
 	}
 
 	copyText = cardTitle + "\n" + cardText;
@@ -242,6 +287,17 @@ function initializePage() {
 	// Displaying a new card when the page loads
 	index = initializeIndex();
 	displayCard(index);
+}
+
+// flip to the history
+function showHistory() {
+	hideInstructions();
+
+	// Rotating the Card Box
+	blockBack.classList.toggle('rotateB');
+	blockFront.classList.toggle('rotateF');
+	
+	// displayHistory();
 }
 
 // Adding an onclick listener to copy the card
@@ -524,8 +580,8 @@ window.onload = function() {
 	initializeButtonFront.addEventListener('click', initializePage);
 	initializeButtonBack.addEventListener('click', initializePage);
 	
-	historyButtonFront.addEventListener('click', initializePage);
-	historyButtonBack.addEventListener('click', initializePage);
+	// historyButtonFront.addEventListener('click', showHistory);
+	// historyButtonBack.addEventListener('click', showHistory);
 
 	// event = keyup or keydown
 	document.addEventListener('keydown', (e) => {

@@ -164,6 +164,8 @@ p {
 
 /* List icon is a card history button */
 .btn-history {
+	/* Temporarily hidden */
+	visibility: hidden;
 	font-size:15px;
 	cursor: pointer;
 	text-align: center;
